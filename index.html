@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Pong</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    html,body{height:100%;}
+    body{background:#0f172a;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    .touch-btn{opacity:0.07}
+    @media (min-width:640px){.touch-btn{display:none}}
+  </style>
+</head>
+  <body class="flex flex-col min-h-screen items-center justify-between p-4 text-slate-100">
+    <a href="#gameCanvas" class="absolute left-0 top-0 m-2 p-2 rounded bg-indigo-600 text-white text-sm focus:block focus:outline-none" style="transform:translateY(-110%);">Aller au jeu</a>
+  <header class="w-full max-w-3xl">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Simple Pong</h1>
+    </div>
+  </header>
+
+  <main class="w-full max-w-3xl flex-1 flex flex-col items-center justify-center gap-4" role="application" aria-label="Jeu Pong" >
+    <div class="w-full bg-slate-800/30 rounded-lg p-4 flex flex-col items-center">
+      <div class="w-full flex justify-center mb-2">
+  <canvas id="gameCanvas" width="640" height="360" class="w-full h-auto" aria-label="Aire de jeu" tabindex="0" aria-describedby="instructions"></canvas>
+      </div>
+
+      <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <button id="startBtn" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-indigo-300" aria-pressed="false">Lancer / Réinitialiser</button>
+          <div class="text-sm text-slate-300">Durée : <span id="scoreDisplay">0.00</span>s</div>
+          <div class="text-sm text-slate-300 ml-4">Meilleur : <span id="bestDisplay">0.00</span>s</div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm text-slate-300">Fond</label>
+          <input type="color" id="bgColor" aria-label="Couleur du fond">
+          <label class="text-sm text-slate-300">Éléments</label>
+          <input type="color" id="fgColor" aria-label="Couleur des éléments">
+          <button id="saveColors" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-sm">Sauvegarder</button>
+        </div>
+      </div>
+
+      <div id="message" class="mt-3 text-center text-yellow-300" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="w-full flex items-center justify-between mt-2">
+      <div class="flex items-center gap-2 text-slate-300 text-sm">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Le jeu se joue entièrement dans le canvas. Accessible clavier et tactile.</span>
+      </div>
+      <div class="sm:hidden flex gap-2">
+        <button id="touchLeft" class="touch-btn w-14 h-14 rounded bg-slate-700 flex items-center justify-center text-xl" aria-label="Bouger à gauche"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="touchRight" class="touch-btn w-14 h-14 rounded bg-slate-700 flex items-center justify-center text-xl" aria-label="Bouger à droite"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
